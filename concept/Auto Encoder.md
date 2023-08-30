@@ -66,13 +66,13 @@ $p_{data}(x)$ 和 $p_{model}(x)$ 相近
   - direct
     - **GAN**
 
-## 4. Variational Autoencoder
-
-### 4.1 自编码器
+## 4. Autoencoder
 
 <img src="/images/Autoencoder.png" width="300">
 
-#### 编码器
+### 4.1 基本概念
+
+**编码器**
 
 进行无监督特征学习，提取数据 $x$ 中有效的低维的特征 $z$，$z$ 仅保留数据中有意义的信息
 
@@ -80,7 +80,7 @@ $p_{data}(x)$ 和 $p_{model}(x)$ 相近
 
 训练好后的用途：特征学习、监督分类
 
-#### 解码器
+**解码器**
 
 从特征 $z$ 重构输入数据 $\hat{x}$
 
@@ -88,13 +88,39 @@ $p_{data}(x)$ 和 $p_{model}(x)$ 相近
 
 训练好后的用途：图像生成
 
-#### 训练
+**训练**
 
 调整编码器和解码器
 
 最小化L2范数 $||x-\hat{x}||^2$
 
-### 4.2 变分自编码器
+### 4.2 分类
+
+Auto-Encoder主要可以分为以下几类:
+
+1. 标准Auto-Encoder:最基本的Auto-Encoder结构,通过 Encoder将输入压缩到低维空间,Decoder再重构输入。
+
+2. **稀疏Auto-Encoder(Sparse Auto-Encoder)**:在Encoder输出加入稀疏性约束,使隐层表示更为稀疏。
+
+3. 去噪Auto-Encoder(Denoising Auto-Encoder):在输入数据加入噪声,使模型更具泛化性。
+
+4. **变分Auto-Encoder(Variational Auto-Encoder)**:引入变分推断,使编码层输出满足标准正态分布。
+
+5.  LSTM Auto-Encoder:使用LSTM作为Encoder和Decoder,处理顺序数据。
+
+6. 卷积Auto-Encoder(Convolutional Auto-Encoder):使用卷积层作为编码器和解码器,处理图像等数据。
+
+7. 防故障Encoder(Robust Auto-Encoder):训练时在输入/隐层加入干扰,增加对异常值的鲁棒性。 
+
+8. 递归Auto-Encoder:使用递归神经网络作为自动编码器。
+
+9. 堆叠Auto-Encoder(Stacked Auto-Encoder):串联多个Auto-Encoder形成深度非监督模型。
+
+10. 对抗Auto-Encoder(Adversarial Auto-Encoder):加入对抗网络使隐空间正则化。
+
+还有一些更复杂的结构,组合了上述不同类型的Auto-Encoder。不同结构各有优势,需要根据具体任务进行选择。
+
+### 4.3 Variational Autoencoder 变分自编码器
 
 <img src="/images/VariationalAutoencoder.png" width="300">
 
